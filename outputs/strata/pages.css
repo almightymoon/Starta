@@ -65,17 +65,18 @@ body.page main > :last-child{margin-bottom:0}
 .contact-form--page button{margin-top:8px;padding:16px 22px}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
 
-/* Compact bar — must override global footer { min-height:82vh } */
+/* Proper mid-size footer bar — not the tall home footer, not a hairline */
 footer.site-footer{
   background:#171714 !important;
   color:var(--paper);
-  min-height:0 !important;
+  min-height:72px !important;
   height:auto !important;
   margin:0 !important;
-  padding:18px 8vw !important;
-  display:block !important;
-  flex-direction:unset !important;
-  align-items:unset !important;
+  padding:28px 8vw !important;
+  display:flex !important;
+  align-items:center !important;
+  flex-direction:row !important;
+  box-sizing:border-box;
 }
 .page-cta + .site-footer{margin-top:0 !important}
 footer.site-footer .footer-bottom{
@@ -83,15 +84,16 @@ footer.site-footer .footer-bottom{
   justify-content:space-between;
   align-items:center;
   flex-wrap:wrap;
-  gap:12px 24px;
+  gap:14px 28px;
   margin:0 !important;
   padding:0 !important;
   width:100%;
-  font:9px 'DM Mono',monospace;
+  font:10px/1.4 'DM Mono',monospace;
   text-transform:uppercase;
-  letter-spacing:.04em;
+  letter-spacing:.06em;
 }
 footer.site-footer a{color:inherit;text-decoration:none}
+footer.site-footer a:hover{color:var(--lime)}
 .contact-page main{padding-bottom:0}
 
 .approach-hero{background:linear-gradient(150deg,#1a1a17 0%,#2a2c27 55%,#3a3d36 100%);color:var(--paper)}
@@ -121,7 +123,7 @@ footer.site-footer a{color:inherit;text-decoration:none}
   .contact-page-layout{grid-template-columns:1fr;padding:4vw 6vw 5vw;gap:48px}
   .contact-form--page{padding:24px}
   .form-grid{grid-template-columns:1fr}
-  footer.site-footer{padding:16px 6vw}
+  footer.site-footer{padding:24px 6vw !important;min-height:64px !important}
   .studio-strip figure{width:78vw}
   .studio-strip img{height:56vw}
   .workflow{padding:16vw 6vw}

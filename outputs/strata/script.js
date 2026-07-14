@@ -167,7 +167,7 @@
       if (reduceMotion) return;
       const rect = parent.getBoundingClientRect();
       const mid = rect.top + rect.height / 2 - window.innerHeight / 2;
-      img.style.transform = `translateY(${mid * -0.08}px) scale(1.08)`;
+      img.style.transform = `translate3d(0, ${mid * -0.06}px, 0)`;
     }, { passive: true });
   });
 

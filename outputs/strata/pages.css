@@ -40,9 +40,15 @@
 .studio-strip img{width:100%;height:min(28vw,360px);object-fit:cover;display:block}
 .studio-strip figcaption{padding-top:10px;font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em}
 
-.page-cta{background:var(--lime);min-height:45vh;padding:10vw 8vw;display:flex;flex-direction:column;justify-content:center}
+.page-cta{background:var(--lime);min-height:0;padding:8vw 8vw 7vw;display:flex;flex-direction:column;justify-content:center}
 .page-cta a{font-size:clamp(30px,6vw,95px);letter-spacing:-.075em;color:var(--ink);text-decoration:none;border-bottom:2px solid;padding-bottom:10px;margin-top:30px;align-self:flex-start}
 .page-cta a span{font-size:.6em;margin-left:15px}
+
+/* Kill trailing paper / overscroll gap under last sections */
+html{background:#171714}
+body.page{background:var(--paper)}
+body.page main{padding-bottom:0;margin-bottom:0}
+body.page main > :last-child{margin-bottom:0}
 
 .contact-hero{background:linear-gradient(135deg,#cfd4c4,#e2e3da 50%,#d4ef40 140%);min-height:52vh;padding-bottom:6vw}
 .contact-page-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:8vw;padding:2vw 8vw 3.5vw;align-items:start}
@@ -61,16 +67,17 @@
 
 /* Compact bar — must override global footer { min-height:82vh } */
 footer.site-footer{
-  background:var(--ink);
+  background:#171714 !important;
   color:var(--paper);
   min-height:0 !important;
   height:auto !important;
-  margin:0;
-  padding:20px 8vw;
+  margin:0 !important;
+  padding:18px 8vw !important;
   display:block !important;
   flex-direction:unset !important;
   align-items:unset !important;
 }
+.page-cta + .site-footer{margin-top:0 !important}
 footer.site-footer .footer-bottom{
   display:flex;
   justify-content:space-between;
@@ -96,8 +103,8 @@ footer.site-footer a{color:inherit;text-decoration:none}
 .workflow-step h2{font-size:clamp(28px,3.5vw,48px);letter-spacing:-.06em;margin:0 0 16px;font-weight:600}
 .workflow-step p{margin:0;max-width:420px;font-size:15px;line-height:1.65}
 .workflow-tag{font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;justify-self:end;padding-top:10px;opacity:.55}
-.workflow-visual{height:58vh;position:relative;overflow:hidden;background:#cfcfc6}
-.workflow-visual img{width:100%;height:120%;object-fit:cover;filter:contrast(1.05)}
+.workflow-visual{height:58vh;position:relative;overflow:hidden;background:#cfcfc6;isolation:isolate}
+.workflow-visual img{width:100%;height:120%;object-fit:cover;filter:contrast(1.05);will-change:transform;max-width:none}
 .workflow-visual span{position:absolute;left:8vw;bottom:5vw;max-width:260px;background:var(--paper);padding:14px;font:11px/1.5 'DM Mono',monospace}
 
 @media(max-width:720px){
@@ -110,7 +117,7 @@ footer.site-footer a{color:inherit;text-decoration:none}
   .principles{grid-template-columns:1fr;padding:18vw 6vw}
   .principles>p{grid-row:auto}
   .principles div{grid-template-columns:70px 1fr}
-  .page-cta{padding:18vw 6vw}
+  .page-cta{padding:14vw 6vw 12vw}
   .contact-page-layout{grid-template-columns:1fr;padding:4vw 6vw 5vw;gap:48px}
   .contact-form--page{padding:24px}
   .form-grid{grid-template-columns:1fr}

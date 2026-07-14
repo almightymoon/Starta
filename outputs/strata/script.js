@@ -3,7 +3,42 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const root = document.documentElement;
 
-  document.body.classList.add('is-loaded');
+  /* ——— First-visit loader (home only) ——— */
+  const loader = document.getElementById('loader');
+  if (loader) {
+    document.body.classList.add('is-loading');
+    const bar = loader.querySelector('.loader-bar span');
+    const meta = loader.querySelector('.loader-meta');
+    const phrases = ['Constructing the frame', 'Aligning the strata', 'Setting the plinth', 'Opening the site'];
+    let prog = 0;
+    let phrase = 0;
+    const finish = () => {
+      if (bar) bar.style.width = '100%';
+      loader.classList.add('is-done');
+      document.body.classList.remove('is-loading');
+      document.body.classList.add('is-loaded');
+    };
+    if (reduceMotion) {
+      finish();
+    } else {
+      const id = setInterval(() => {
+        prog = Math.min(100, prog + (prog < 60 ? 4 : prog < 85 ? 2.5 : 1.5));
+        if (bar) bar.style.width = `${prog}%`;
+        const idx = Math.min(phrases.length - 1, Math.floor(prog / 25));
+        if (meta && idx !== phrase) {
+          phrase = idx;
+          meta.textContent = phrases[phrase];
+        }
+        if (prog >= 100) {
+          clearInterval(id);
+          finish();
+        }
+      }, 28);
+      setTimeout(finish, 3200);
+    }
+  } else {
+    document.body.classList.add('is-loaded');
+  }
 
   /* ——— Visible dual cursor ——— */
   const cursor = document.querySelector('.cursor');
@@ -34,7 +69,7 @@
       y = e.clientY;
       if (!visible) {
         visible = true;
-        cursor.style.opacity = '1';
+        cursor.classList.add('is-on');
       }
     }, { passive: true });
 

@@ -1,7 +1,7 @@
-import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
-import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js';
-import { GLTFLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
-import { RoomEnvironment } from 'https://unpkg.com/three@0.160.0/examples/jsm/environments/RoomEnvironment.js';
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 const stage = document.getElementById('modelStage');
 const host = document.getElementById('houseCanvas');
@@ -22,16 +22,16 @@ const pmrem = new THREE.PMREMGenerator(renderer);
 scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 
 const camera = new THREE.PerspectiveCamera(32, 1, 0.05, 50);
-camera.position.set(1.55, 0.95, 2.15);
+camera.position.set(1.15, 0.72, 1.55);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.06;
 controls.autoRotate = true;
 controls.autoRotateSpeed = 0.7;
-controls.minDistance = 1.2;
-controls.maxDistance = 3.4;
-controls.target.set(0, 0.18, 0);
+controls.minDistance = 0.95;
+controls.maxDistance = 2.8;
+controls.target.set(0, 0.22, 0);
 controls.update();
 
 const hemi = new THREE.HemisphereLight(0xf2f0e6, 0x6d7368, 1.05);
@@ -46,8 +46,8 @@ fill.position.set(-2.2, 1.4, -1.2);
 scene.add(fill);
 
 const ground = new THREE.Mesh(
-  new THREE.CircleGeometry(2.4, 64),
-  new THREE.ShadowMaterial({ opacity: 0.22 })
+  new THREE.CircleGeometry(3.2, 64),
+  new THREE.ShadowMaterial({ opacity: 0.18 })
 );
 ground.rotation.x = -Math.PI / 2;
 ground.position.y = -0.01;
@@ -77,15 +77,15 @@ loader.load(
     root.position.y += size.y * 0.5;
 
     const maxDim = Math.max(size.x, size.y, size.z) || 1;
-    const scale = 1.15 / maxDim;
-    root.scale.setScalar(scale);
+    root.scale.setScalar(1.72 / maxDim);
 
     scene.add(root);
     stage.classList.add('is-ready');
     if (fallback) fallback.setAttribute('aria-hidden', 'true');
   },
   undefined,
-  () => {
+  (err) => {
+    console.error('GLB load failed', err);
     stage.classList.add('is-error');
   }
 );
@@ -99,17 +99,15 @@ const resize = () => {
 };
 resize();
 
-const ro = new ResizeObserver(resize);
-ro.observe(host);
+new ResizeObserver(resize).observe(host);
 
 stage.addEventListener('pointerenter', () => { controls.autoRotate = false; });
 stage.addEventListener('pointerleave', () => { controls.autoRotate = true; });
 
 let visible = true;
-const io = new IntersectionObserver((entries) => {
+new IntersectionObserver((entries) => {
   visible = entries.some((e) => e.isIntersecting);
-}, { threshold: 0.05 });
-io.observe(stage);
+}, { threshold: 0.05 }).observe(stage);
 
 const tick = () => {
   requestAnimationFrame(tick);

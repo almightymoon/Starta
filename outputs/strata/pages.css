@@ -8,9 +8,14 @@
 .page-hero h1 em{font-family:'Playfair Display',serif;font-weight:500}
 .page-hero>p:last-child{font-size:13px;line-height:1.6;max-width:320px;position:relative}
 
-.gallery-filter{display:flex;gap:10px;flex-wrap:wrap;padding:0 8vw 4vw}
-.gallery-filter button{border:1px solid var(--ink);background:transparent;color:var(--ink);padding:10px 16px;font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;transition:.3s}
+.gallery-filter{display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding:28px 8vw 20px;border-top:1px solid var(--line);background:var(--paper)}
+.gallery-filter button{border:1px solid var(--ink);background:transparent;color:var(--ink);padding:11px 18px;font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;transition:.3s}
 .gallery-filter button.is-active,.gallery-filter button:hover{background:var(--ink);color:var(--lime)}
+
+.gallery-page .page-hero{min-height:0;padding:7vw 8vw 5vw}
+.gallery-page .page-hero h1{margin:3vw 0 1.5vw}
+.gallery-page .masonry{padding:12px 8vw 10vw;columns:2 440px;column-gap:24px}
+.gallery-page .masonry figure{margin:0 0 24px}
 
 .masonry{columns:2 440px;gap:20px;padding:2vw 8vw 10vw}
 .masonry figure{margin:0 0 20px;break-inside:avoid;overflow:hidden;background:#ddd;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
@@ -39,30 +44,80 @@
 .page-cta a{font-size:clamp(30px,6vw,95px);letter-spacing:-.075em;color:var(--ink);text-decoration:none;border-bottom:2px solid;padding-bottom:10px;margin-top:30px;align-self:flex-start}
 .page-cta a span{font-size:.6em;margin-left:15px}
 
-.contact-hero{background:linear-gradient(135deg,#cfd4c4,#e2e3da 50%,#d4ef40 140%)}
-.contact-page-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:6vw;padding:0 8vw 12vw;align-items:start}
-.contact-aside .contact-link{font-size:clamp(22px,2.8vw,40px);display:inline-block;margin:24px 0 40px}
-.contact-aside ul{list-style:none;padding:0;margin:0 0 40px}
-.contact-aside li{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding:14px 0;font:11px/1.4 'DM Mono',monospace;text-transform:uppercase}
+.contact-hero{background:linear-gradient(135deg,#cfd4c4,#e2e3da 50%,#d4ef40 140%);min-height:52vh;padding-bottom:6vw}
+.contact-page-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:8vw;padding:2vw 8vw 3.5vw;align-items:start}
+.contact-aside .contact-link{font-size:clamp(22px,2.8vw,40px);display:inline-block;margin:28px 0 48px}
+.contact-aside ul{list-style:none;padding:0;margin:0 0 48px}
+.contact-aside li{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding:18px 0;font:11px/1.4 'DM Mono',monospace;text-transform:uppercase}
 .contact-aside li strong{font-weight:500}
-.contact-aside-visual{overflow:hidden;height:280px;background:#ddd}
+.contact-aside-visual{overflow:hidden;height:320px;background:#ddd}
 .contact-aside-visual img{width:100%;height:100%;object-fit:cover;filter:saturate(.85);transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
 .contact-aside-visual:hover img{transform:scale(1.06)}
-.contact-form--page{padding:28px;background:rgba(255,255,255,.35);border:1px solid var(--line)}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.contact-form--page{padding:36px 40px 40px;background:rgba(255,255,255,.42);border:1px solid var(--line)}
+.contact-form--page label{margin:0 0 28px}
+.contact-form--page input,.contact-form--page textarea,.contact-form--page select{padding:14px 0}
+.contact-form--page button{margin-top:8px;padding:16px 22px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
+
+/* Compact bar — must override global footer { min-height:82vh } */
+footer.site-footer{
+  background:var(--ink);
+  color:var(--paper);
+  min-height:0 !important;
+  height:auto !important;
+  margin:0;
+  padding:20px 8vw;
+  display:block !important;
+  flex-direction:unset !important;
+  align-items:unset !important;
+}
+footer.site-footer .footer-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px 24px;
+  margin:0 !important;
+  padding:0 !important;
+  width:100%;
+  font:9px 'DM Mono',monospace;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+footer.site-footer a{color:inherit;text-decoration:none}
+.contact-page main{padding-bottom:0}
+
+.approach-hero{background:linear-gradient(150deg,#1a1a17 0%,#2a2c27 55%,#3a3d36 100%);color:var(--paper)}
+.approach-hero .eyebrow{opacity:.7}
+.workflow{padding:8vw;display:flex;flex-direction:column;gap:0;background:var(--paper)}
+.workflow-step{display:grid;grid-template-columns:100px 1fr 140px;gap:4vw;align-items:start;border-top:1px solid var(--line);padding:4.5vw 0}
+.workflow-step:last-child{border-bottom:1px solid var(--line)}
+.workflow-num{font-size:clamp(36px,5vw,64px);font-weight:700;letter-spacing:-.08em;line-height:1;color:var(--clay)}
+.workflow-step h2{font-size:clamp(28px,3.5vw,48px);letter-spacing:-.06em;margin:0 0 16px;font-weight:600}
+.workflow-step p{margin:0;max-width:420px;font-size:15px;line-height:1.65}
+.workflow-tag{font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;justify-self:end;padding-top:10px;opacity:.55}
+.workflow-visual{height:58vh;position:relative;overflow:hidden;background:#cfcfc6}
+.workflow-visual img{width:100%;height:120%;object-fit:cover;filter:contrast(1.05)}
+.workflow-visual span{position:absolute;left:8vw;bottom:5vw;max-width:260px;background:var(--paper);padding:14px;font:11px/1.5 'DM Mono',monospace}
 
 @media(max-width:720px){
   .page-nav nav{display:flex;gap:12px}
   .page-nav nav a{font-size:8px}
   .page-hero{padding:25vw 6vw 16vw}
-  .masonry{columns:1;padding:8vw 6vw 16vw}
-  .gallery-filter{padding:0 6vw 8vw}
+  .gallery-filter{padding:22px 6vw 16px;gap:8px}
+  .gallery-page .page-hero{padding:18vw 6vw 10vw}
+  .gallery-page .masonry,.masonry{columns:1;padding:8px 6vw 16vw}
   .principles{grid-template-columns:1fr;padding:18vw 6vw}
   .principles>p{grid-row:auto}
   .principles div{grid-template-columns:70px 1fr}
   .page-cta{padding:18vw 6vw}
-  .contact-page-layout{grid-template-columns:1fr;padding:0 6vw 18vw}
+  .contact-page-layout{grid-template-columns:1fr;padding:4vw 6vw 5vw;gap:48px}
+  .contact-form--page{padding:24px}
   .form-grid{grid-template-columns:1fr}
+  footer.site-footer{padding:16px 6vw}
   .studio-strip figure{width:78vw}
   .studio-strip img{height:56vw}
+  .workflow{padding:16vw 6vw}
+  .workflow-step{grid-template-columns:1fr;gap:12px;padding:12vw 0}
+  .workflow-tag{justify-self:start}
 }

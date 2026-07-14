@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact — STRATA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="refine.css">
+  <link rel="stylesheet" href="pages.css">
+  <link rel="stylesheet" href="motion.css">
+</head>
+<body class="page contact-page">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor-ring"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-label">View</div>
+  </div>
+  <div class="page-progress" aria-hidden="true"><span></span></div>
+
+  <header class="nav page-nav" data-nav>
+    <a class="brand magnetic" href="index.html">ST<span>R</span>ATA<small>®</small></a>
+    <nav>
+      <a href="index.html#approach">Approach</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="studio.html">Studio</a>
+      <a class="active" href="contact.html">Contact</a>
+    </nav>
+    <a class="nav-cta magnetic" href="#enquire">Start a project <i>↗</i></a>
+  </header>
+
+  <main>
+    <section class="page-hero contact-hero" id="enquire">
+      <p class="eyebrow" data-reveal>New commission / enquiry</p>
+      <h1 class="split-headline" data-split>Let’s make<br>it <em>matter.</em></h1>
+      <p data-reveal>Share a site, an ambition, or a question. We reply within a few working days.</p>
+    </section>
+
+    <section class="contact-page-layout">
+      <aside class="contact-aside" data-reveal>
+        <p class="eyebrow">Direct</p>
+        <a class="contact-link magnetic" href="mailto:studio@strata.build">studio@strata.build <span>↗</span></a>
+        <ul>
+          <li><strong>Studio</strong><span>Karachi · Worldwide</span></li>
+          <li><strong>Hours</strong><span>Mon–Fri, 10:00–18:00 PKT</span></li>
+          <li><strong>Typical response</strong><span>2–4 working days</span></li>
+        </ul>
+        <div class="contact-aside-visual">
+          <img src="assets/ChatGPT%20Image%20Jul%2014,%202026,%2005_23_05%20PM.png" alt="Plan study">
+        </div>
+      </aside>
+
+      <form class="contact-form contact-form--page" data-reveal>
+        <div class="form-grid">
+          <label>Name<input required name="name" placeholder="Your name" autocomplete="name"></label>
+          <label>Email<input required type="email" name="email" placeholder="you@company.com" autocomplete="email"></label>
+          <label>Company / client<input name="company" placeholder="Optional" autocomplete="organization"></label>
+          <label>Location<input name="location" placeholder="City or site"></label>
+        </div>
+        <label>Project type
+          <select name="type" required>
+            <option value="" disabled selected>Select one</option>
+            <option>Residence</option>
+            <option>Pavilion / civic</option>
+            <option>Adaptive reuse</option>
+            <option>Masterplan / campus</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>Budget range
+          <select name="budget">
+            <option value="" disabled selected>Optional</option>
+            <option>Under $250k</option>
+            <option>$250k – $1M</option>
+            <option>$1M – $5M</option>
+            <option>$5M+</option>
+            <option>Not sure yet</option>
+          </select>
+        </label>
+        <label>Tell us about it<textarea required name="brief" rows="6" placeholder="Site conditions, programme, timeline, references…"></textarea></label>
+        <button type="submit" class="magnetic">Send enquiry <span>↗</span></button>
+        <p class="form-note" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
